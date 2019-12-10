@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.URI;
+import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -22,12 +22,17 @@ public class Api {
     @Value("${uri}")
     private String baseUri;
 
-    private HttpClient client = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .followRedirects(HttpClient.Redirect.ALWAYS)
-            .connectTimeout(Duration.ofSeconds(10))
-            .build();
+    @Value("${proxy-uri}")
+    private String proxyUri;
 
+    @Value("${proxy-port}")
+    private int proxyPort;
+
+    @Value("${proxy-username}")
+    private String proxyUserName;
+
+    @Value("${proxy-password}")
+    private String proxyPassword;
 
     public ApiResult call(String word) throws IOException, InterruptedException {
         return call(word, 1, 1);
@@ -38,6 +43,19 @@ public class Api {
     }
 
     public ApiResult call(String word, int num, int page) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .proxy(ProxySelector.of(new InetSocketAddress(proxyUri, proxyPort)))
+                .authenticator(new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(proxyUserName, proxyPassword.toCharArray());
+                    }
+                })
+                .followRedirects(HttpClient.Redirect.ALWAYS)
+                .connectTimeout(Duration.ofSeconds(10))
+                .build();
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseUri.concat(String.format("?key=%s&word=%s&num=%d&page=%d", key, word, num, page))))
                 .GET()
