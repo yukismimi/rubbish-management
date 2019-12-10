@@ -3,6 +3,7 @@ package com.yukismimi.rubbishmanagement.api;
 import com.yukismimi.rubbishmanagement.rubbsh.Rubbish;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,5 +13,5 @@ public class ApiResult {
 
     String msg;
 
-    List<Rubbish> newslist;
+    List<Rubbish> newslist = new ArrayList<>();
 }
