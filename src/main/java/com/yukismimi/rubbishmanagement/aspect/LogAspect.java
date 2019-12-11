@@ -21,6 +21,6 @@ public class LogAspect {
 
     @Before("execution( * com.yukismimi.rubbishmanagement.api.Api.call(String, int ,int))")
     public void beforeCallApi(JoinPoint joinPoint){
-        log.info("Api is called by params [{},{},{}]", joinPoint.getArgs());
+        log.info("Api is called by params {}.", joinPoint.getArgs());
     }
 }
