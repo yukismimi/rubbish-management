@@ -23,7 +23,10 @@ public class RubbishServiceImpl {
 
         return api.call(name, num, page).getNewslist()
                 .stream()
-                .map(repository::save)
+                .map(rubbish -> {
+                    rubbish.setId(repository.findByName(rubbish.getName()).map(Rubbish::getId).orElse(null));
+                    return repository.save(rubbish);
+                })
                 .limit(num)
                 .collect(Collectors.toList());
     }
