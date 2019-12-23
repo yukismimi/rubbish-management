@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.yukismimi.rubbishmanagement.utils.FileUtils;
 import com.yukismimi.rubbishmanagement.utils.SpeechUtil;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/ai/speech")
 @Api("语音识别")
+@CrossOrigin
 public class SpeechRecognitionController {
   @Value(value = "${localPath.speech}")
   private String localPath;

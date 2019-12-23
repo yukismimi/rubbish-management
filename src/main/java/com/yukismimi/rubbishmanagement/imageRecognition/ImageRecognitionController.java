@@ -10,6 +10,7 @@ import com.yukismimi.rubbishmanagement.utils.FileUtils;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/ai/image")
 @Api("图像识别")
+@CrossOrigin
 public class ImageRecognitionController {
   @Autowired
   private RubbishServiceImpl rubbishService;
