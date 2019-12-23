@@ -10,3 +10,6 @@ spring:
     password: root
   jpa:
     show-sql: true
+localPath:
+  image: E:/Develop/Files/Images
+  speech: E:/Develop/Files/Speeches

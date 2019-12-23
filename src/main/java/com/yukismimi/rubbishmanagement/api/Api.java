@@ -45,13 +45,13 @@ public class Api {
     public ApiResult call(String word, int num, int page) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
-                .proxy(ProxySelector.of(new InetSocketAddress(proxyUri, proxyPort)))
-                .authenticator(new Authenticator() {
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(proxyUserName, proxyPassword.toCharArray());
-                    }
-                })
+//                .proxy(ProxySelector.of(new InetSocketAddress(proxyUri, proxyPort)))
+//                .authenticator(new Authenticator() {
+//                    @Override
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(proxyUserName, proxyPassword.toCharArray());
+//                    }
+//                })
                 .followRedirects(HttpClient.Redirect.ALWAYS)
                 .connectTimeout(Duration.ofSeconds(10))
                 .build();
