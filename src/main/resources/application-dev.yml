@@ -11,5 +11,5 @@ spring:
   jpa:
     show-sql: true
 localPath:
-  image: E:/Develop/Files/Images
-  speech: E:/Develop/Files/Speeches
+  image: /root/upload/images
+  speech: /root/upload/speeches
