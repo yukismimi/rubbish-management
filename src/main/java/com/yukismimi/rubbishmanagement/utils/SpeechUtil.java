@@ -30,7 +30,7 @@ public class SpeechUtil {
 
   private SpeechUtil(){
     client = new AipSpeech(APP_ID, API_KEY, SECRET_KEY);
-    client.setHttpProxy("10.167.196.133", 8080);
+//    client.setHttpProxy("10.167.196.133", 8080);
   }
 
   public static SpeechUtil getInstance(){

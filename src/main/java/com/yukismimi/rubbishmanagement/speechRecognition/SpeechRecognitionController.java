@@ -18,6 +18,8 @@ import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 @RestController
 @RequestMapping("/ai/speech")
 @Api("语音识别")
@@ -27,7 +29,7 @@ public class SpeechRecognitionController {
   private String localPath;
   @RequestMapping(value = "getRecordString", method = RequestMethod.POST)
   @ApiOperation("识别接口")
-  public String recongnition(MultipartFile file) throws IOException, InterruptedException{
+  public String recongnition(MultipartFile file) throws IOException, InterruptedException, UnsupportedAudioFileException {
     // 要上传的目标文件存放路径
     String uploadedFilePath = FileUtils.upload(file, localPath, file.getOriginalFilename());
     JSONObject result = JSONObject.parseObject(SpeechUtil.getInstance().asrLocalSpeech(uploadedFilePath));
