@@ -52,6 +52,8 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    // https://mvnrepository.com/artifact/com.googlecode.soundlibs/mp3spi
+    compile group: 'com.googlecode.soundlibs', name: 'mp3spi', version: '1.9.5.4'
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
     testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 }
